@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* ===================================================================
+   カラーパレット & 基本変数(プランで定義したミニマル+ポップトーン)
+   =================================================================== */
+:root {
+  --background: #faf8f2;       /* オフホワイト/クリーム */
+  --foreground: #111111;       /* メインテキスト */
+  --accent-pink: #ff4b6e;      /* ヒーロー・CTAなどポイント使用 */
+  --accent-blue: #2b4dff;      /* リンク・引用 */
+  --muted: #7a7a7a;            /* 補助テキスト */
+  --border: #e5e1d6;           /* 仕切り線 */
+  --card: #ffffff;             /* カード背景 */
+}
+
+/* Tailwind v4 のテーマ定義 — クラス例: bg-base / text-ink / text-pop など */
+@theme inline {
+  --color-base: var(--background);
+  --color-ink: var(--foreground);
+  --color-pop: var(--accent-pink);
+  --color-deep: var(--accent-blue);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+
+  --font-sans: var(--font-noto-sans-jp);
+  --font-serif: var(--font-shippori-mincho);
+  --font-display: var(--font-orbit);
+}
+
+/* ===================================================================
+   グローバルスタイル
+   =================================================================== */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-noto-sans-jp), "Hiragino Sans", "Yu Gothic", sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* ===================================================================
+   タイポグラフィヘルパー
+   =================================================================== */
+.font-serif-jp {
+  font-family: var(--font-shippori-mincho), "Hiragino Mincho ProN", serif;
+  font-feature-settings: "palt";
+}
+
+.font-display {
+  font-family: var(--font-orbit), monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ===================================================================
+   アニメーション(ヒーローの音符モチーフ用)
+   =================================================================== */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* セクション間の境界線 */
+.section-divider {
+  border-top: 1px solid var(--border);
+}
+
+/* ボタン共通(ホバーで色反転) */
+.btn-invert {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border: 1px solid var(--foreground);
+  background: var(--foreground);
+  color: var(--background);
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-invert:hover {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border: 1px solid var(--foreground);
+  background: transparent;
+  color: var(--foreground);
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-outline:hover {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* スクロールバー(控えめに) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}

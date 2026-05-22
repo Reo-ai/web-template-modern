@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:sankoudesign.com)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm --turbopack --yes)",
+      "Bash(npx --yes create-next-app@latest hp-composition --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm --turbopack --yes)",
+      "Bash(npm install framer-motion lenis lucide-react gray-matter @next/mdx @mdx-js/loader @mdx-js/react @types/mdx)",
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"/ -> HTTP %{http_code}\\\\n\" http://localhost:3000/ --max-time 10)",
+      "Bash(curl -s -o /dev/null -w \"/blog -> HTTP %{http_code}\\\\n\" http://localhost:3000/blog --max-time 15)",
+      "Bash(curl -s -o /dev/null -w \"/blog/first-song-tips -> HTTP %{http_code}\\\\n\" http://localhost:3000/blog/first-song-tips --max-time 15)",
+      "Bash(kill 4538)",
+      "Bash(gh auth status)",
+      "Bash(git init -b main)",
+      "Bash(git add .)",
+      "Bash(git -c:*)",
+      "Bash(gh repo create reo-music-school --private --source=. --remote=origin --push)",
+      "WebFetch(domain:reo-music-school.vercel.app)"
+    ]
+  }
+}
