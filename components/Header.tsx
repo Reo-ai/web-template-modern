@@ -22,6 +22,7 @@ const NAV_BASE = [
 
 const NAV_BLOG = { href: "#blog", label: "BLOG" };
 const NAV_CONTACT = { href: "#contact", label: "CONTACT" };
+const NAV_PROPOSAL = { href: "/proposal", label: "提案書AI", isPage: true };
 
 const NAV_ITEMS = ENABLE_BLOG
   ? [...NAV_BASE, NAV_BLOG, NAV_CONTACT]
@@ -59,7 +60,7 @@ export default function Header() {
           </Link>
 
           {/* PC ナビゲーション */}
-          <nav className="hidden gap-7 md:flex">
+          <nav className="hidden items-center gap-7 md:flex">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -69,6 +70,13 @@ export default function Header() {
                 {item.label}
               </a>
             ))}
+            {/* 提案書AI — 別ページリンク */}
+            <Link
+              href={NAV_PROPOSAL.href}
+              className="flex items-center gap-1 rounded-full border border-ink/20 px-3 py-1.5 font-display text-xs tracking-wider text-ink/70 transition-all hover:border-pop hover:text-pop"
+            >
+              ✦ {NAV_PROPOSAL.label}
+            </Link>
           </nav>
 
           {/* モバイル: メニューボタン */}
@@ -120,6 +128,15 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+          {/* モバイル: 提案書AI */}
+          <Link
+            href={NAV_PROPOSAL.href}
+            onClick={() => setMenuOpen(false)}
+            className="font-serif-jp text-2xl font-bold text-pop transition-transform hover:translate-x-2"
+            style={{ transitionDelay: `${NAV_ITEMS.length * 40}ms` }}
+          >
+            ✦ {NAV_PROPOSAL.label}
+          </Link>
         </nav>
       </div>
     </>
