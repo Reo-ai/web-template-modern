@@ -126,6 +126,13 @@ body {
   color: var(--background);
 }
 
+/* 提案書 PDF 出力用スタイル */
+@media print {
+  header, footer, .print\:hidden { display: none !important; }
+  body { background: white !important; color: black !important; }
+  @page { margin: 20mm; size: A4; }
+}
+
 /* スクロールバー(控えめに) */
 ::-webkit-scrollbar {
   width: 10px;

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ENABLE_BLOG, SITE_NAME } from "@/lib/config";
 
@@ -30,6 +31,8 @@ const NAV_ITEMS = ENABLE_BLOG
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isProposal = pathname === "/proposal";
 
   // スクロール量で背景の不透明度を切り替え
   useEffect(() => {
@@ -59,16 +62,27 @@ export default function Header() {
           </Link>
 
           {/* PC ナビゲーション */}
-          <nav className="hidden gap-7 md:flex">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="font-display text-xs tracking-widest text-ink/80 transition-colors hover:text-pop"
-              >
-                {item.label}
-              </a>
-            ))}
+          <nav className="hidden gap-7 md:flex items-center">
+            {!isProposal &&
+              NAV_ITEMS.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="font-display text-xs tracking-widest text-ink/80 transition-colors hover:text-pop"
+                >
+                  {item.label}
+                </a>
+              ))}
+            <Link
+              href="/proposal"
+              className={`font-display text-xs tracking-widest transition-colors px-3 py-1.5 rounded-full border ${
+                isProposal
+                  ? "bg-pop text-base border-pop"
+                  : "border-ink/30 text-ink/80 hover:border-pop hover:text-pop"
+              }`}
+            >
+              PROPOSAL AI
+            </Link>
           </nav>
 
           {/* モバイル: メニューボタン */}
@@ -120,6 +134,13 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+          <Link
+            href="/proposal"
+            onClick={() => setMenuOpen(false)}
+            className="font-serif-jp text-3xl font-bold text-pop transition-transform hover:translate-x-2"
+          >
+            PROPOSAL AI
+          </Link>
         </nav>
       </div>
     </>
