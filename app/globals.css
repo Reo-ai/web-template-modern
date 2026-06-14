@@ -126,6 +126,14 @@ body {
   color: var(--background);
 }
 
+/* 提案書印刷スタイル */
+@media print {
+  header, footer, .print\:hidden { display: none !important; }
+  body { background: white; }
+  .proposal-document { box-shadow: none; }
+  @page { margin: 15mm; }
+}
+
 /* スクロールバー(控えめに) */
 ::-webkit-scrollbar {
   width: 10px;

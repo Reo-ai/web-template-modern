@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ENABLE_BLOG, SITE_NAME } from "@/lib/config";
+import { usePathname } from "next/navigation";
 
 /**
  * 固定型のフローティングヘッダー。
@@ -30,6 +31,9 @@ const NAV_ITEMS = ENABLE_BLOG
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  // 提案書ページではヘッダーを非表示
+  if (pathname === "/proposal") return null;
 
   // スクロール量で背景の不透明度を切り替え
   useEffect(() => {
