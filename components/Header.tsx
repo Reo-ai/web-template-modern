@@ -22,10 +22,11 @@ const NAV_BASE = [
 
 const NAV_BLOG = { href: "#blog", label: "BLOG" };
 const NAV_CONTACT = { href: "#contact", label: "CONTACT" };
+const NAV_PROPOSAL = { href: "/proposal", label: "PROPOSAL" };
 
 const NAV_ITEMS = ENABLE_BLOG
-  ? [...NAV_BASE, NAV_BLOG, NAV_CONTACT]
-  : [...NAV_BASE, NAV_CONTACT];
+  ? [...NAV_BASE, NAV_BLOG, NAV_CONTACT, NAV_PROPOSAL]
+  : [...NAV_BASE, NAV_CONTACT, NAV_PROPOSAL];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -61,13 +62,13 @@ export default function Header() {
           {/* PC ナビゲーション */}
           <nav className="hidden gap-7 md:flex">
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="font-display text-xs tracking-widest text-ink/80 transition-colors hover:text-pop"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -110,7 +111,7 @@ export default function Header() {
       >
         <nav className="flex h-full flex-col items-start justify-center gap-8 px-10">
           {NAV_ITEMS.map((item, i) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               onClick={() => setMenuOpen(false)}
@@ -118,7 +119,7 @@ export default function Header() {
               style={{ transitionDelay: `${i * 40}ms` }}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>
