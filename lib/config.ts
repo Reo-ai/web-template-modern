@@ -32,3 +32,10 @@ export const ENABLE_CHATBOT = true;
  * (false でもファイル自体は残るので、後で true に戻せばすぐ復活)
  */
 export const ENABLE_BLOG = true;
+
+/**
+ * AI提案資料ジェネレーターを表示するかどうか。
+ * true にすると Header に PROPOSAL リンクが追加され /proposal ページが利用可能になります。
+ * ANTHROPIC_API_KEY 環境変数が必要です。
+ */
+export const ENABLE_PROPOSAL = true;
