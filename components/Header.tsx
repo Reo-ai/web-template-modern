@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ENABLE_BLOG, SITE_NAME } from "@/lib/config";
 
 /**
@@ -30,6 +31,8 @@ const NAV_ITEMS = ENABLE_BLOG
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isProposalPage = pathname?.startsWith("/proposal");
 
   // スクロール量で背景の不透明度を切り替え
   useEffect(() => {
@@ -59,8 +62,8 @@ export default function Header() {
           </Link>
 
           {/* PC ナビゲーション */}
-          <nav className="hidden gap-7 md:flex">
-            {NAV_ITEMS.map((item) => (
+          <nav className="hidden gap-7 md:flex items-center">
+            {!isProposalPage && NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
@@ -69,6 +72,16 @@ export default function Header() {
                 {item.label}
               </a>
             ))}
+            <Link
+              href="/proposal"
+              className={`font-display text-xs tracking-widest transition-colors rounded-full px-4 py-2 border ${
+                isProposalPage
+                  ? "border-ink bg-ink text-base"
+                  : "border-pop text-pop hover:bg-pop hover:text-white"
+              }`}
+            >
+              提案書生成
+            </Link>
           </nav>
 
           {/* モバイル: メニューボタン */}
@@ -120,6 +133,14 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+          <Link
+            href="/proposal"
+            onClick={() => setMenuOpen(false)}
+            className="font-serif-jp text-3xl font-bold text-pop transition-transform hover:translate-x-2"
+            style={{ transitionDelay: `${NAV_ITEMS.length * 40}ms` }}
+          >
+            提案書生成
+          </Link>
         </nav>
       </div>
     </>
