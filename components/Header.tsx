@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ENABLE_BLOG, SITE_NAME } from "@/lib/config";
 
@@ -22,12 +23,15 @@ const NAV_BASE = [
 
 const NAV_BLOG = { href: "#blog", label: "BLOG" };
 const NAV_CONTACT = { href: "#contact", label: "CONTACT" };
+const NAV_PROPOSAL = { href: "/proposal", label: "PROPOSAL", isPage: true };
 
 const NAV_ITEMS = ENABLE_BLOG
-  ? [...NAV_BASE, NAV_BLOG, NAV_CONTACT]
-  : [...NAV_BASE, NAV_CONTACT];
+  ? [...NAV_BASE, NAV_BLOG, NAV_CONTACT, NAV_PROPOSAL]
+  : [...NAV_BASE, NAV_CONTACT, NAV_PROPOSAL];
 
 export default function Header() {
+  const pathname = usePathname();
+  const isProposal = pathname === "/proposal";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -59,16 +63,30 @@ export default function Header() {
           </Link>
 
           {/* PC ナビゲーション */}
-          <nav className="hidden gap-7 md:flex">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="font-display text-xs tracking-widest text-ink/80 transition-colors hover:text-pop"
-              >
-                {item.label}
-              </a>
-            ))}
+          <nav className="hidden gap-7 md:flex items-center">
+            {NAV_ITEMS.map((item) =>
+              "isPage" in item && item.isPage ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-full border px-4 py-1.5 font-display text-xs tracking-widest transition-all ${
+                    isProposal
+                      ? "border-pop bg-pop text-white"
+                      : "border-ink text-ink hover:bg-ink hover:text-base"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="font-display text-xs tracking-widest text-ink/80 transition-colors hover:text-pop"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </nav>
 
           {/* モバイル: メニューボタン */}
@@ -109,17 +127,29 @@ export default function Header() {
         }`}
       >
         <nav className="flex h-full flex-col items-start justify-center gap-8 px-10">
-          {NAV_ITEMS.map((item, i) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className="font-serif-jp text-3xl font-bold transition-transform hover:translate-x-2"
-              style={{ transitionDelay: `${i * 40}ms` }}
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV_ITEMS.map((item, i) =>
+            "isPage" in item && item.isPage ? (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className="font-serif-jp text-3xl font-bold text-pop transition-transform hover:translate-x-2"
+                style={{ transitionDelay: `${i * 40}ms` }}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className="font-serif-jp text-3xl font-bold transition-transform hover:translate-x-2"
+                style={{ transitionDelay: `${i * 40}ms` }}
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
       </div>
     </>
