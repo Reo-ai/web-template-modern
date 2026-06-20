@@ -126,6 +126,20 @@ body {
   color: var(--background);
 }
 
+/* 提案資料の印刷スタイル */
+@media print {
+  header, footer, nav, button, .btn-invert, .btn-outline {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+  .rounded-3xl, .rounded-2xl {
+    border-radius: 0;
+  }
+}
+
 /* スクロールバー(控えめに) */
 ::-webkit-scrollbar {
   width: 10px;
