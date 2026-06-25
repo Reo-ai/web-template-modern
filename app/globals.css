@@ -126,6 +126,36 @@ body {
   color: var(--background);
 }
 
+/* ===================================================================
+   印刷スタイル(提案書ページ用)
+   =================================================================== */
+@media print {
+  /* ヘッダー・フッター・チャットボットを非表示 */
+  header,
+  footer,
+  [data-chatbot] {
+    display: none !important;
+  }
+
+  /* 背景色をそのまま印刷 */
+  body {
+    background: white;
+    color: black;
+  }
+
+  /* ページ余白 */
+  @page {
+    margin: 20mm 15mm;
+  }
+
+  /* セクションの改ページを防ぐ */
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}
+
 /* スクロールバー(控えめに) */
 ::-webkit-scrollbar {
   width: 10px;
