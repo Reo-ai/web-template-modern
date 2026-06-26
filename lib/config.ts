@@ -32,3 +32,10 @@ export const ENABLE_CHATBOT = true;
  * (false でもファイル自体は残るので、後で true に戻せばすぐ復活)
  */
 export const ENABLE_BLOG = true;
+
+/**
+ * 提案書自動生成機能を表示するかどうか。
+ * true にすると Header に「PROPOSAL」リンクが追加され、/proposals ページが有効になります。
+ * 利用には環境変数 ANTHROPIC_API_KEY の設定が必要です。
+ */
+export const ENABLE_PROPOSAL_GENERATOR = true;

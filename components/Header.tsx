@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ENABLE_BLOG, SITE_NAME } from "@/lib/config";
+import { ENABLE_BLOG, ENABLE_PROPOSAL_GENERATOR, SITE_NAME } from "@/lib/config";
 
 /**
  * 固定型のフローティングヘッダー。
@@ -22,10 +22,14 @@ const NAV_BASE = [
 
 const NAV_BLOG = { href: "#blog", label: "BLOG" };
 const NAV_CONTACT = { href: "#contact", label: "CONTACT" };
+const NAV_PROPOSAL = { href: "/proposals", label: "PROPOSAL" };
 
-const NAV_ITEMS = ENABLE_BLOG
-  ? [...NAV_BASE, NAV_BLOG, NAV_CONTACT]
-  : [...NAV_BASE, NAV_CONTACT];
+const NAV_ITEMS = [
+  ...NAV_BASE,
+  ...(ENABLE_BLOG ? [NAV_BLOG] : []),
+  NAV_CONTACT,
+  ...(ENABLE_PROPOSAL_GENERATOR ? [NAV_PROPOSAL] : []),
+];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);

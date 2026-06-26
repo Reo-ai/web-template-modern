@@ -141,3 +141,29 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
 }
+
+/* ===================================================================
+   印刷 / PDF 出力(提案書ページ用)
+   =================================================================== */
+@media print {
+  header, footer, .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 12pt;
+  }
+
+  .proposal-document {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+
+  @page {
+    margin: 20mm 15mm;
+    size: A4;
+  }
+}
