@@ -62,12 +62,22 @@ http://localhost:3000 を開きます。
 
 | ファイル | 役割 |
 |---|---|
-| `lib/config.ts` | サイト名 / チャットボット ON-OFF / ブログ ON-OFF |
+| `lib/config.ts` | サイト名 / チャットボット ON-OFF / ブログ ON-OFF / 提案資料生成 ON-OFF |
 | `lib/courses.ts` | サービス・プラン一覧 |
 | `lib/works.ts` | 実績・作品 |
 | `lib/blog.ts` | ブログ記事 |
 | `lib/chatbot/faq.ts` | FAQ(チャットボットと共通) |
 | `app/globals.css` | カラーパレット(CSS 変数) |
+
+## 提案資料自動生成機能(/proposal)
+
+アポイント(商談)のヒアリング内容を入力すると、Anthropic API(Claude)が提案資料のたたき台を自動生成します。
+
+1. `.env.example` を `.env.local` にコピー
+2. [console.anthropic.com](https://console.anthropic.com/) で発行した API キーを `ANTHROPIC_API_KEY` に設定
+3. `npm run dev` → `http://localhost:3000/proposal` で利用
+
+不要な場合は `lib/config.ts` の `ENABLE_PROPOSAL_GENERATOR` を `false` にしてください。
 
 ## ドキュメント
 

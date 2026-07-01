@@ -32,3 +32,9 @@ export const ENABLE_CHATBOT = true;
  * (false でもファイル自体は残るので、後で true に戻せばすぐ復活)
  */
 export const ENABLE_BLOG = true;
+
+/**
+ * 商談内容から提案資料を自動生成する機能(/proposal)を表示するかどうか。
+ * 利用するには環境変数 ANTHROPIC_API_KEY の設定が必要(.env.example 参照)。
+ */
+export const ENABLE_PROPOSAL_GENERATOR = true;

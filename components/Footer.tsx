@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/config";
+import { ENABLE_PROPOSAL_GENERATOR, SITE_NAME, SITE_TAGLINE } from "@/lib/config";
 
 /**
  * フッター(テンプレート版)。
@@ -18,11 +18,17 @@ const SNS_LINKS = [
   { href: "https://www.instagram.com/", label: "INSTAGRAM" },
 ];
 
-const SITE_LINKS = [
+const SITE_LINKS_BASE = [
   { href: "#about", label: "About" },
   { href: "#courses", label: "Services" },
   { href: "#blog", label: "Blog" },
 ];
+
+const NAV_PROPOSAL = { href: "/proposal", label: "Proposal Generator" };
+
+const SITE_LINKS = ENABLE_PROPOSAL_GENERATOR
+  ? [...SITE_LINKS_BASE, NAV_PROPOSAL]
+  : SITE_LINKS_BASE;
 
 export default function Footer() {
   return (

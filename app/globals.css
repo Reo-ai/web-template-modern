@@ -126,6 +126,22 @@ body {
   color: var(--background);
 }
 
+/* ===================================================================
+   印刷対応(提案資料ページ用)
+   =================================================================== */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  .proposal-print {
+    border: none;
+    padding: 0;
+  }
+}
+
 /* スクロールバー(控えめに) */
 ::-webkit-scrollbar {
   width: 10px;
