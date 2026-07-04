@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 print:hidden ${
           scrolled
             ? "bg-base/85 backdrop-blur-md border-b border-border"
             : "bg-transparent"
@@ -102,7 +102,7 @@ export default function Header() {
 
       {/* モバイルフルスクリーンメニュー */}
       <div
-        className={`fixed inset-0 z-30 bg-base transition-opacity duration-500 md:hidden ${
+        className={`fixed inset-0 z-30 bg-base transition-opacity duration-500 md:hidden print:hidden ${
           menuOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"

@@ -76,7 +76,7 @@ export default function Chatbot() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label={open ? "チャットを閉じる" : "チャットを開く"}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-ink text-base shadow-[0_8px_30px_-8px_rgba(0,0,0,0.4)] md:bottom-8 md:right-8 md:h-16 md:w-16"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-ink text-base shadow-[0_8px_30px_-8px_rgba(0,0,0,0.4)] md:bottom-8 md:right-8 md:h-16 md:w-16 print:hidden"
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (
@@ -128,7 +128,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-24 right-4 z-50 flex h-[min(560px,calc(100vh-7rem))] w-[min(380px,calc(100vw-2rem))] flex-col overflow-hidden rounded-3xl border border-border bg-base shadow-[0_24px_60px_-12px_rgba(0,0,0,0.25)] md:bottom-28 md:right-8"
+            className="fixed bottom-24 right-4 z-50 flex h-[min(560px,calc(100vh-7rem))] w-[min(380px,calc(100vw-2rem))] flex-col overflow-hidden rounded-3xl border border-border bg-base shadow-[0_24px_60px_-12px_rgba(0,0,0,0.25)] md:bottom-28 md:right-8 print:hidden"
           >
             {/* ヘッダー */}
             <div className="flex items-center justify-between border-b border-border bg-card px-5 py-4">
