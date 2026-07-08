@@ -26,7 +26,7 @@ const SITE_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-base">
+    <footer className="border-t border-border bg-base print:hidden">
       <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-10 md:py-24">
         {/* 大きな見出し */}
         <h2 className="whitespace-pre-line font-serif-jp text-4xl font-bold leading-tight tracking-tight md:text-6xl">
